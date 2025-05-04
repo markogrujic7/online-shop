@@ -9,66 +9,70 @@
     <hr>
     
     <div class="top-row">
-    <table class="table-1">
-        <tr>
-            <th>Br</th>
-            <th>Naziv</th>
-            <th>Cena($)</th>
-        </tr>
-    </table>
+        <table class="table-1">
+            <thead>
+                <tr>
+                    <th>Br</th>
+                    <th>Naziv</th>
+                    <th>Cena($)</th>
+                </tr>
+            </thead>
+            <tbody class="tabela-artikli">
 
-    <table class="table-2">
-        <form>
-            <tr>
-                <td>
-                    <div class="form-group">
-                        <label for="naziv">Naziv:</label>
-                        <input required type="text" id="naziv">
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="form-group">
-                        <label for="cena">Cena:</label>
-                        <input required type="number" id="cena">
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="form-group">
-                        <label for="opis">Opis:</label>
-                        <input required type="text" id="opis">
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div>
-                        <input type="submit" value="Dodaj" class="submit">
-                    </div>
-                </td>
-            </tr>
-        </form>
-    </table>
-    
+            </tbody>
+        </table>
+
+        <table class="table-2">
+            <form class="forma">
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="naziv">Naziv:</label>
+                            <input type="text" class="input-naziv" required>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="cena">Cena:</label>
+                            <input type="number" class="input-cena" required>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="opis">Opis:</label>
+                            <input type="text" class="input-opis">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>
+                            <input type="submit" value="Dodaj" class="submit">
+                        </div>
+                    </td>
+                </tr>
+            </form>
+        </table>
     </div>
     
     <table class="details">
         <tr>
             <td>
-                <div>Naziv:...</div>
+                <div class="detalji-naziv">Naziv:...</div>
             </td>
         </tr>
         <tr>
             <td>
-                <div>Cena:...</div>
+                <div class="detalji-cena">Cena:...</div>
             </td>
         </tr>
         <tr>
             <td>
-                <div>Opis:...</div>
+                <div class="detalji-opis">Opis:...</div>
             </td>
         </tr>
     </table>

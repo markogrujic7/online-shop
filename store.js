@@ -8,72 +8,68 @@ class Artical {
     }
 }
 
-const articals = [
-    new Artical("Monitor", 165, "Full HD monitor 27 inch"),
-    new Artical("TV", 650, "4K Smart TV"),
-    new Artical("Miš", 20, "Bežični miš")
-];
+function ucitajArtikle() {
+    const sacuvaniArtikli = localStorage.getItem('articals');
+    if (sacuvaniArtikli) {
+        const parsedArtikli = JSON.parse(sacuvaniArtikli);
+        return parsedArtikli.map(art => new Artical(art.naziv, art.cena, art.opis));
+    }
+    return [];
+}
 
+let articals = ucitajArtikle();
 
-let table = document.querySelector('.table-1')
+function sacuvajArtikle() {
+    localStorage.setItem('articals', JSON.stringify(articals));
+}
 
-articals.forEach((artical, index) => {
-    let tr = document.createElement("tr");
-    
-    let br = document.createElement("td");
-    let naziv = document.createElement("td");
-    let cena = document.createElement("td");
+function prikaziArtikle() {
+    const tbody = document.querySelector('.tabela-artikli');
+    tbody.innerHTML = '';
 
-    br.textContent = index + 1;
-    naziv.textContent = artical.naziv;
-    cena.textContent = artical.cena;
+    articals.forEach((artical, index) => {
+        const tr = document.createElement('tr');
+        
+        const br = document.createElement('td');
+        const naziv = document.createElement('td');
+        const cena = document.createElement('td');
 
-    tr.appendChild(br);
-    tr.appendChild(naziv);
-    tr.appendChild(cena);
+        br.textContent = index + 1;
+        naziv.textContent = artical.naziv;
+        cena.textContent = artical.cena;
 
-    table.appendChild(tr);
+        tr.appendChild(br);
+        tr.appendChild(naziv);
+        tr.appendChild(cena);
 
-    tr.addEventListener('click', function() {
-        document.querySelector('.details tr:nth-child(1) div').textContent = `Naziv: ${artical.naziv}`;
-        document.querySelector('.details tr:nth-child(2) div').textContent = `Cena: ${artical.cena}$`;
-        document.querySelector('.details tr:nth-child(3) div').textContent = `Opis: ${artical.opis}`;
+        tr.addEventListener('click', () => prikaziDetalje(artical));
+        
+        tbody.appendChild(tr);
     });
-});
+}
 
+function prikaziDetalje(artical) {
+    document.querySelector('.detalji-naziv').textContent = `Naziv: ${artical.naziv}`;
+    document.querySelector('.detalji-cena').textContent = `Cena: ${artical.cena}$`;
+    document.querySelector('.detalji-opis').textContent = `Opis: ${artical.opis || 'Nema opisa'}`;
+}
 
-document.querySelector('form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const naziv = document.getElementById('naziv').value;
-    const cena = document.getElementById('cena').value;
-    const opis = document.getElementById('opis').value;
-    
+function dodajArtikal(naziv, cena, opis) {
     const noviArtikal = new Artical(naziv, cena, opis);
     articals.push(noviArtikal);
-    
-    const tr = document.createElement("tr");
-    const br = document.createElement("td");
-    const nazivTd = document.createElement("td");
-    const cenaTd = document.createElement("td");
+    sacuvajArtikle(); 
+    prikaziArtikle(); 
+}
 
-    br.textContent = articals.length;
-    nazivTd.textContent = noviArtikal.naziv;
-    cenaTd.textContent = noviArtikal.cena;
+prikaziArtikle();
 
-    tr.appendChild(br);
-    tr.appendChild(nazivTd);
-    tr.appendChild(cenaTd);
-
-    table.appendChild(tr);
+document.querySelector('.forma').addEventListener('submit', function(e) {
+    e.preventDefault();
     
-    document.getElementById('naziv').value = '';
-    document.getElementById('cena').value = '';
-    document.getElementById('opis').value = '';
+    const naziv = document.querySelector('.input-naziv').value.trim();
+    const cena = document.querySelector('.input-cena').value.trim();
+    const opis = document.querySelector('.input-opis').value.trim();
     
-    tr.addEventListener('click', function() {
-        document.querySelector('.details tr:nth-child(1) div').textContent = `Naziv: ${noviArtikal.naziv}`;
-        document.querySelector('.details tr:nth-child(2) div').textContent = `Cena: ${noviArtikal.cena}$`;
-        document.querySelector('.details tr:nth-child(3) div').textContent = `Opis: ${noviArtikal.opis}`;
-    });
+    dodajArtikal(naziv, cena, opis);   
+    this.reset();
 });

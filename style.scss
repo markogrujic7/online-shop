@@ -7,8 +7,7 @@ body {
     display: flex;
 
     .table-1 {
-        width: 15%;
-        display: inline;
+        display: inline-block;
         border-collapse: collapse;
         th, td {
             border: 1px solid black;
@@ -24,9 +23,10 @@ body {
     }
     
     .table-2 {
+        margin-left: 30px;
         height: 20%;
         border: 1px solid black;
-        display: inline;
+        display: inline-block;
         border-collapse: collapse;
         padding: 10px;
         td {
@@ -53,7 +53,7 @@ body {
 }
 
 .details {
-    width: 12%;
+    width: 250px;
     margin-top: 30px;
     border: 1px solid black;
     border-collapse: collapse;
