@@ -1,0 +1,66 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  height: 100vh;
+}
+
+.top-row {
+  display: flex;
+}
+.top-row .table-1 {
+  width: 15%;
+  display: inline;
+  border-collapse: collapse;
+}
+.top-row .table-1 th, .top-row .table-1 td {
+  border: 1px solid black;
+  padding: 15px;
+}
+.top-row .table-1 th {
+  background-color: #f2f2f2;
+}
+.top-row .table-1 tr:hover {
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+.top-row .table-2 {
+  border: 1px solid black;
+  display: inline;
+  border-collapse: collapse;
+  padding: 10px;
+}
+.top-row .table-2 td {
+  padding: 5px;
+}
+.top-row .table-2 .form-group {
+  margin-bottom: 15px;
+}
+.top-row .table-2 label {
+  display: inline-block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.top-row .table-2 input:not([type=submit]) {
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid black;
+}
+.top-row .table-2 .submit {
+  float: right;
+}
+
+.details {
+  width: 12%;
+  margin-top: 30px;
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 10px;
+}
+.details td {
+  padding: 5px;
+}
+.details div {
+  margin-bottom: 15px;
+}
+
+/*# sourceMappingURL=style.css.map */
